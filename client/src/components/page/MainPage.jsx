@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import data from "../../Data";
+import { useSelector } from 'react-redux'
 import PostList from "../list/PostList";
 import styled from "styled-components";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 const Main = styled.main`
   display: flex;
@@ -11,29 +12,42 @@ const Main = styled.main`
   justify-content: center;
 `
 
-const Div = styled.div`
+const DivBtn = styled.div`
   text-align: center;
-  border: 1px solid red;
-  width: 500px;
+  background-color: white;
+  box-shadow: 1px 1px 3px 1px #c4c4c4;
+  border-radius: 10px;
+  width: 250px;
   height: 3rem;
   padding: 0;
-  margin: 0;
-  font-size: 1.5rem;
+  margin: 40px 0 60px 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 
 const MainPage = () => {
+  const state = useSelector(state => state.postReducer)
+  const { post } = state;
   const navigate = useNavigate();
   
   const onClickItem = (item) => {
-    const idx = data.findIndex((el) => el.title === item.title);
-    navigate(`/post/${data[idx].id}`)
+    const idx = post.findIndex((el) => el.title === item.title);
+    navigate(`/post/${post[idx].id}`)
   }
 
   return (
     <Main>
-      <Div onClick={() => navigate(`/write`)}>글 작성하기</Div>
-      <PostList posts={data} onClickItem={onClickItem}></PostList>
+      <DivBtn role="button"  onClick={() => navigate(`/write`)}>
+        <FontAwesomeIcon icon={faPen} />
+      </DivBtn>
+      <PostList post={post} onClickItem={onClickItem}></PostList>
     </Main>
   );
 };

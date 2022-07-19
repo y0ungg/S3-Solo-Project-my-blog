@@ -27,19 +27,20 @@ const StyledLink = styled(Link)`
 
 const Title = styled.h1`
   font-family: sans-serif;
+  font-style: italic;
   text-align: center;
-  border: 1px solid green;
   padding: 40px 0px;
   font-size: 4rem;
   font-weight: 100;
-  font-style: italic;
+  cursor: pointer;
 `
 
 const Footer = styled.footer`
   text-align: right;
   margin-top: 50px;
   padding: 10px 10px 30px 0;
-  background: #c1edf8;
+  border-top: 1px solid #e1e1e1;
+  color: gray;
 `
 
 function App() {
