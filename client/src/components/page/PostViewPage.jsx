@@ -27,8 +27,10 @@ const PostViewPage = () => {
   const { postId } = useParams();
   const [value, setValue] = useState('');
   
+  //클릭한 글
   const selectedPost = post.find((item) => item.id === parseInt(postId));
-  const selectedComments = comments.find((el) => el.postId === postId)
+  //클릭한 글의 댓글 (배열)
+  const selectedComments = comments.find((el) => el.postId === parseInt(postId)).content;
 
   const onChangeHandler = (event) => {
     setValue(event.target.value);
@@ -44,6 +46,7 @@ const PostViewPage = () => {
     //   setNewComment([...newComment, value]);
     // }
     dispatch(addComment(postId, value))
+    console.log(addComment(postId, value))
   }
 
 

@@ -8,11 +8,10 @@ const Wrapper = styled.div`
 `;
 
 const CommentList = ({ comments, newComment }) => {
-
   return (
     <Wrapper>
-      {/* <CommentListItem comments={comments}/>
-      {[...newComment].map((el, idx) => {return (<p key={idx}>{el}</p>)})} */}
+      {/* {comments.map((v,i) => {<div key={}>{v}</div>})} */}
+      {/* {[...newComment].map((el, idx) => {return (<p key={idx}>{el}</p>)})} */}
     </Wrapper>
   );
 };
