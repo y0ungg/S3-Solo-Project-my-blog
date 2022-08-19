@@ -25,33 +25,30 @@ const PostViewPage = () => {
   const { post, comments } = state;
   const dispatch = useDispatch();
   const { postId } = useParams();
-  const [value, setValue] = useState('');
-  
   //클릭한 글
   const selectedPost = post.find((item) => item.id === parseInt(postId));
   //클릭한 글의 댓글 (배열)
   const selectedComments = comments.find((el) => el.postId === parseInt(postId)).content;
-
-  const onChangeHandler = (event) => {
-    setValue(event.target.value);
-  }
+  const [value, setValue] = useState('');
+  const [newComment, setNewComment] = useState([]);
+  const [id, setId] = useState(Math.max(...(post.map(v => {return v.id}))))
+  
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    // dispatch(addComment(postId, value))
-    // console.log(postId, value)
-    // console.log(event.target.value)
-  }
-
+    setId(id => id + 1)
+    setNewComment([...newComment, {id, content: value}])
+    dispatch(addComment(postId, newComment))
+  };
 
     return (
       <div>
         <div>{selectedPost.title}</div>
         <div>{selectedPost.content}</div>
-        <CommentList comments={selectedComments} />
+        <CommentList comments={selectedComments} newComment={newComment} />
         <Form onSubmit={onSubmitHandler}>
-          <TextInput onChange={onChangeHandler} value={value} type="text"></TextInput>
-          <input onChange={onChangeHandler} type="submit" value="등록"></input>
+          <TextInput onChange={(e) => setValue(e.target.value)} value={value} type="text"></TextInput>
+          <button>등록</button>
         </Form>
       </div>
     );

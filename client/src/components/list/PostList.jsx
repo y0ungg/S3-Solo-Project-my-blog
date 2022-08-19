@@ -39,8 +39,6 @@ const TitleDiv = styled.div`
 const PostList = (props) => {
   const { post, onClickItem } = props;
 
-  console.log(post)
-
   return (
     <StyledDiv >
       {post.map((item) => {
