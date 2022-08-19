@@ -4,7 +4,7 @@ import { initialState } from "./initialState";
 const postReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_POST:
-            return {...state, post: [...state.post, action.payload]};
+            return {...state, post: [...state.post, action.payload]}
         case EDIT_POST:
             let notEdited = state.post.filter((el) => el.id !== action.payload.id)
             return {...state, post: [...notEdited, action.payload]}

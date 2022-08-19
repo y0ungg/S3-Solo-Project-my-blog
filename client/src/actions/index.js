@@ -4,17 +4,15 @@ export const EDIT_POST = "EDIT_POST";
 export const DELETE_POST = "DELETE_POST";
 export const ADD_COMMENT = "ADD_COMMENT";
 
-let lastestPostId = 6;
-
 //actions creator functions
-export const addPost = (title, content, img) => {
+export const addPost = (newPost) => {
     return {
         type: ADD_POST,
         payload: {
-            id: lastestPostId++,
-            title,
-            content,
-            img
+            id: newPost.id,
+            title: newPost.title,
+            content: newPost.content,
+            img: "",
         }
     }
 }

@@ -38,15 +38,9 @@ const PostViewPage = () => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    // if(newComment.includes(value)) {
-    //   alert("중복 댓글입니다.");
-    //   setValue('');
-    // }
-    // else{
-    //   setNewComment([...newComment, value]);
-    // }
-    dispatch(addComment(postId, value))
-    console.log(addComment(postId, value))
+    // dispatch(addComment(postId, value))
+    // console.log(postId, value)
+    // console.log(event.target.value)
   }
 
 

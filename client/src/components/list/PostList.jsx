@@ -39,20 +39,21 @@ const TitleDiv = styled.div`
 const PostList = (props) => {
   const { post, onClickItem } = props;
 
+  console.log(post)
+
   return (
     <StyledDiv >
       {post.map((item) => {
         return (
-          <Wrapper key={'div'+item.id}  onClick={() => onClickItem(item)}>
+          <Wrapper key={item.id}  onClick={() => onClickItem(item)}>
             <Img
-              key={'img'+item.id}
               src={
                 item.img
                   ? item.img
                   : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
               }
             ></Img>
-            <TitleDiv key={item.id} post={item}>
+            <TitleDiv post={item}>
               {item.title}
             </TitleDiv>
           </Wrapper>

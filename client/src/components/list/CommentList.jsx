@@ -8,10 +8,13 @@ const Wrapper = styled.div`
 `;
 
 const CommentList = ({ comments, newComment }) => {
+  console.log(newComment)
   return (
     <Wrapper>
-      {/* {comments.map((v,i) => {<div key={}>{v}</div>})} */}
-      {/* {[...newComment].map((el, idx) => {return (<p key={idx}>{el}</p>)})} */}
+      {comments.map(v => {return <div key={v.id}>{v.content}</div>})}
+      {newComment
+      ? [...newComment].map((el, idx) => {return (<p key={idx}>{el}</p>)})
+      : null}
     </Wrapper>
   );
 };
